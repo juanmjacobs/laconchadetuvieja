@@ -28,5 +28,45 @@
     <div class="conference-text">
         la conferencia
     </div>
+
+    <script>
+        // List of attractive Google Fonts
+        const fonts = [
+            'Roboto',
+            'Open Sans',
+            'Lato',
+            'Poppins',
+            'Montserrat',
+            'Raleway',
+            'Source Sans Pro',
+            'Ubuntu',
+            'Nunito',
+            'Inter',
+            'Playfair Display',
+            'Merriweather',
+            'PT Sans',
+            'Noto Sans',
+            'Work Sans',
+            'Quicksand',
+            'Josefin Sans',
+            'Bebas Neue',
+            'Anton',
+            'Bangers'
+        ];
+
+        // Select a random font
+        const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+        
+        // Create and append the Google Fonts link
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(' ', '+')}:wght@400;700&display=swap`;
+        document.head.appendChild(link);
+        
+        // Apply the font to the text
+        link.onload = function() {
+            document.querySelector('.conference-text').style.fontFamily = `'${randomFont}', Arial, sans-serif`;
+        };
+    </script>
 </body>
 </html> 

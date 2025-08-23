@@ -78,25 +78,37 @@
             { bg: '#ffffff', text: '#2c3e50' }  // White with dark blue-gray
         ];
 
-        // Select random font and colors
-        const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-        const randomColors = colorCombos[Math.floor(Math.random() * colorCombos.length)];
-        
-        // Apply background color immediately
-        document.body.style.backgroundColor = randomColors.bg;
-        
-        // Create and append the Google Fonts link
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(' ', '+')}:wght@400;700&display=swap`;
-        document.head.appendChild(link);
-        
-        // Apply the font and text color to the text
-        link.onload = function() {
-            const textElement = document.querySelector('.conference-text');
-            textElement.style.fontFamily = `'${randomFont}', Arial, sans-serif`;
-            textElement.style.color = randomColors.text;
-        };
+        // Function to change font and color
+        function changeFontAndColor() {
+            // Select random font and colors
+            const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+            const randomColors = colorCombos[Math.floor(Math.random() * colorCombos.length)];
+            
+            // Apply background color
+            document.body.style.backgroundColor = randomColors.bg;
+            
+            // Create and append the Google Fonts link
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(' ', '+')}:wght@400;700&display=swap`;
+            document.head.appendChild(link);
+            
+            // Apply the font and text color to the text
+            link.onload = function() {
+                const textElement = document.querySelector('.conference-text');
+                textElement.style.fontFamily = `'${randomFont}', Arial, sans-serif`;
+                textElement.style.color = randomColors.text;
+            };
+        }
+
+        // Add click event listener to the text
+        document.addEventListener('DOMContentLoaded', function() {
+            const clickableElement = document.querySelector('body');
+            clickableElement.style.cursor = 'pointer'; // Add pointer cursor to indicate it's clickable
+            clickableElement.addEventListener('click', changeFontAndColor);
+            // Apply initial random font and color
+            changeFontAndColor();
+        });
     </script>
 </body>
 </html> 

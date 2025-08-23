@@ -54,8 +54,36 @@
             'Bangers'
         ];
 
-        // Select a random font
+        // Predefined color combinations with good contrast
+        const colorCombos = [
+            { bg: '#2c3e50', text: '#ecf0f1' }, // Dark blue-gray with light gray
+            { bg: '#e74c3c', text: '#ffffff' }, // Red with white
+            { bg: '#27ae60', text: '#ffffff' }, // Green with white
+            { bg: '#f39c12', text: '#2c3e50' }, // Orange with dark blue-gray
+            { bg: '#8e44ad', text: '#ffffff' }, // Purple with white
+            { bg: '#1abc9c', text: '#ffffff' }, // Turquoise with white
+            { bg: '#34495e', text: '#f1c40f' }, // Dark gray with yellow
+            { bg: '#e67e22', text: '#ffffff' }, // Dark orange with white
+            { bg: '#16a085', text: '#ffffff' }, // Dark green with white
+            { bg: '#c0392b', text: '#f8f9fa' }, // Dark red with light gray
+            { bg: '#2980b9', text: '#ffffff' }, // Blue with white
+            { bg: '#f8f9fa', text: '#2c3e50' }, // Light gray with dark blue-gray
+            { bg: '#2c3e50', text: '#3498db' }, // Dark blue-gray with blue
+            { bg: '#ecf0f1', text: '#e74c3c' }, // Light gray with red
+            { bg: '#95a5a6', text: '#2c3e50' }, // Gray with dark blue-gray
+            { bg: '#9b59b6', text: '#ffffff' }, // Light purple with white
+            { bg: '#f1c40f', text: '#2c3e50' }, // Yellow with dark blue-gray
+            { bg: '#e8f5e8', text: '#27ae60' }, // Very light green with green
+            { bg: '#2c3e50', text: '#f39c12' }, // Dark blue-gray with orange
+            { bg: '#ffffff', text: '#2c3e50' }  // White with dark blue-gray
+        ];
+
+        // Select random font and colors
         const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+        const randomColors = colorCombos[Math.floor(Math.random() * colorCombos.length)];
+        
+        // Apply background color immediately
+        document.body.style.backgroundColor = randomColors.bg;
         
         // Create and append the Google Fonts link
         const link = document.createElement('link');
@@ -63,9 +91,11 @@
         link.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(' ', '+')}:wght@400;700&display=swap`;
         document.head.appendChild(link);
         
-        // Apply the font to the text
+        // Apply the font and text color to the text
         link.onload = function() {
-            document.querySelector('.conference-text').style.fontFamily = `'${randomFont}', Arial, sans-serif`;
+            const textElement = document.querySelector('.conference-text');
+            textElement.style.fontFamily = `'${randomFont}', Arial, sans-serif`;
+            textElement.style.color = randomColors.text;
         };
     </script>
 </body>

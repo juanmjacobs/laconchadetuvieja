@@ -25,7 +25,7 @@
     </style>
 </head>
 <body>
-    <div class="conference-text">
+    <div class="conference-text" id="main-text">
         La concha de tu vieja
     </div>
 
@@ -101,8 +101,26 @@
             };
         }
 
+        // Function to get query string parameter
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Function to update text based on query parameter
+        function updateTextFromQueryParam() {
+            const customValue = getQueryParam('q');
+            if (customValue) {
+                const textElement = document.getElementById('main-text');
+                textElement.textContent = `La concha de tu ${customValue}`;
+            }
+        }
+
         // Add click event listener to the text
         document.addEventListener('DOMContentLoaded', function() {
+            // Update text if query parameter is present
+            updateTextFromQueryParam();
+            
             const clickableElement = document.querySelector('body');
             clickableElement.style.cursor = 'pointer'; // Add pointer cursor to indicate it's clickable
             clickableElement.addEventListener('click', changeFontAndColor);

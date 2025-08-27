@@ -1,132 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La concha de tu vieja</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-        
-        .conference-text {
-            font-size: 4rem;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      .conference-text {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+      }
     </style>
-</head>
-<body>
-    <div class="conference-text" id="main-text">
-        La concha de tu vieja
-    </div>
+  </head>
+  <body>
+    <div class="conference-text" id="main-text">La concha de tu vieja</div>
 
     <script>
-        // List of attractive Google Fonts
-        const fonts = [
-            'Roboto',
-            'Open Sans',
-            'Lato',
-            'Poppins',
-            'Montserrat',
-            'Raleway',
-            'Source Sans Pro',
-            'Ubuntu',
-            'Nunito',
-            'Inter',
-            'Playfair Display',
-            'Merriweather',
-            'PT Sans',
-            'Noto Sans',
-            'Work Sans',
-            'Quicksand',
-            'Josefin Sans',
-            'Bebas Neue',
-            'Anton',
-            'Bangers'
-        ];
+      // List of attractive Google Fonts
+      const fonts = [
+        "Roboto",
+        "Open Sans",
+        "Lato",
+        "Poppins",
+        "Montserrat",
+        "Raleway",
+        "Source Sans Pro",
+        "Ubuntu",
+        "Nunito",
+        "Inter",
+        "Playfair Display",
+        "Merriweather",
+        "PT Sans",
+        "Noto Sans",
+        "Work Sans",
+        "Quicksand",
+        "Josefin Sans",
+        "Bebas Neue",
+        "Anton",
+        "Bangers",
+      ];
 
-        // Predefined color combinations with good contrast
-        const colorCombos = [
-            { bg: '#2c3e50', text: '#ecf0f1' }, // Dark blue-gray with light gray
-            { bg: '#e74c3c', text: '#ffffff' }, // Red with white
-            { bg: '#27ae60', text: '#ffffff' }, // Green with white
-            { bg: '#f39c12', text: '#2c3e50' }, // Orange with dark blue-gray
-            { bg: '#8e44ad', text: '#ffffff' }, // Purple with white
-            { bg: '#1abc9c', text: '#ffffff' }, // Turquoise with white
-            { bg: '#34495e', text: '#f1c40f' }, // Dark gray with yellow
-            { bg: '#e67e22', text: '#ffffff' }, // Dark orange with white
-            { bg: '#16a085', text: '#ffffff' }, // Dark green with white
-            { bg: '#c0392b', text: '#f8f9fa' }, // Dark red with light gray
-            { bg: '#2980b9', text: '#ffffff' }, // Blue with white
-            { bg: '#f8f9fa', text: '#2c3e50' }, // Light gray with dark blue-gray
-            { bg: '#2c3e50', text: '#3498db' }, // Dark blue-gray with blue
-            { bg: '#ecf0f1', text: '#e74c3c' }, // Light gray with red
-            { bg: '#95a5a6', text: '#2c3e50' }, // Gray with dark blue-gray
-            { bg: '#9b59b6', text: '#ffffff' }, // Light purple with white
-            { bg: '#f1c40f', text: '#2c3e50' }, // Yellow with dark blue-gray
-            { bg: '#e8f5e8', text: '#27ae60' }, // Very light green with green
-            { bg: '#2c3e50', text: '#f39c12' }, // Dark blue-gray with orange
-            { bg: '#ffffff', text: '#2c3e50' }  // White with dark blue-gray
-        ];
+      // Predefined color combinations with good contrast
+      const colorCombos = [
+        { bg: "#2c3e50", text: "#ecf0f1" }, // Dark blue-gray with light gray
+        { bg: "#e74c3c", text: "#ffffff" }, // Red with white
+        { bg: "#27ae60", text: "#ffffff" }, // Green with white
+        { bg: "#f39c12", text: "#2c3e50" }, // Orange with dark blue-gray
+        { bg: "#8e44ad", text: "#ffffff" }, // Purple with white
+        { bg: "#1abc9c", text: "#ffffff" }, // Turquoise with white
+        { bg: "#34495e", text: "#f1c40f" }, // Dark gray with yellow
+        { bg: "#e67e22", text: "#ffffff" }, // Dark orange with white
+        { bg: "#16a085", text: "#ffffff" }, // Dark green with white
+        { bg: "#c0392b", text: "#f8f9fa" }, // Dark red with light gray
+        { bg: "#2980b9", text: "#ffffff" }, // Blue with white
+        { bg: "#f8f9fa", text: "#2c3e50" }, // Light gray with dark blue-gray
+        { bg: "#2c3e50", text: "#3498db" }, // Dark blue-gray with blue
+        { bg: "#ecf0f1", text: "#e74c3c" }, // Light gray with red
+        { bg: "#95a5a6", text: "#2c3e50" }, // Gray with dark blue-gray
+        { bg: "#9b59b6", text: "#ffffff" }, // Light purple with white
+        { bg: "#f1c40f", text: "#2c3e50" }, // Yellow with dark blue-gray
+        { bg: "#e8f5e8", text: "#27ae60" }, // Very light green with green
+        { bg: "#2c3e50", text: "#f39c12" }, // Dark blue-gray with orange
+        { bg: "#ffffff", text: "#2c3e50" }, // White with dark blue-gray
+      ];
 
-        // Function to change font and color
-        function changeFontAndColor() {
-            // Select random font and colors
-            const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-            const randomColors = colorCombos[Math.floor(Math.random() * colorCombos.length)];
-            
-            // Apply background color
-            document.body.style.backgroundColor = randomColors.bg;
-            
-            // Create and append the Google Fonts link
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(' ', '+')}:wght@400;700&display=swap`;
-            document.head.appendChild(link);
-            
-            // Apply the font and text color to the text
-            link.onload = function() {
-                const textElement = document.querySelector('.conference-text');
-                textElement.style.fontFamily = `'${randomFont}', Arial, sans-serif`;
-                textElement.style.color = randomColors.text;
-            };
+      // Function to change font and color
+      function changeFontAndColor() {
+        // Select random font and colors
+        const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+        const randomColors =
+          colorCombos[Math.floor(Math.random() * colorCombos.length)];
+
+        // Apply background color
+        document.body.style.backgroundColor = randomColors.bg;
+
+        // Create and append the Google Fonts link
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(
+          " ",
+          "+"
+        )}:wght@400;700&display=swap`;
+        document.head.appendChild(link);
+
+        // Apply the font and text color to the text
+        link.onload = function () {
+          const textElement = document.querySelector(".conference-text");
+          textElement.style.fontFamily = `'${randomFont}', Arial, sans-serif`;
+          textElement.style.color = randomColors.text;
+        };
+      }
+
+      // Function to get query string parameter
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      // Function to update text based on query parameter
+      function updateTextFromQueryParam() {
+        const customValue = getQueryParam("q");
+        if (customValue) {
+          const textElement = document.getElementById("main-text");
+          textElement.textContent = `La concha de tu ${customValue}`;
         }
+      }
 
-        // Function to get query string parameter
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+      // Function to set background color from query parameter
+      function setBackgroundFromQueryParam() {
+        let bgColor = getQueryParam("bg");
+        if (bgColor) {
+          bgColor = "#" + bgColor;
+          // Validate if it's a valid hex color or CSS color name
+          const isValidColor =
+            /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(bgColor) ||
+            CSS.supports("color", bgColor);
+          console.log(isValidColor);
+          if (isValidColor) {
+            document.body.style.backgroundColor = bgColor;
+            return true; // Indicate that custom background was applied
+          }
         }
+        return false; // No custom background applied
+      }
 
-        // Function to update text based on query parameter
-        function updateTextFromQueryParam() {
-            const customValue = getQueryParam('q');
-            if (customValue) {
-                const textElement = document.getElementById('main-text');
-                textElement.textContent = `La concha de tu ${customValue}`;
-            }
+      // Add click event listener to the text
+      document.addEventListener("DOMContentLoaded", function () {
+        // Update text if query parameter is present
+        updateTextFromQueryParam();
+
+        // Set background color from query parameter if present
+        const customBgApplied = setBackgroundFromQueryParam();
+
+        const clickableElement = document.querySelector("body");
+        clickableElement.style.cursor = "pointer"; // Add pointer cursor to indicate it's clickable
+        clickableElement.addEventListener("click", changeFontAndColor);
+
+        // Apply initial random font and color (only if no custom background was applied)
+        if (!customBgApplied) {
+          changeFontAndColor();
+        } else {
+          // If custom background was applied, still apply random font and text color
+          const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+          const randomColors =
+            colorCombos[Math.floor(Math.random() * colorCombos.length)];
+
+          // Create and append the Google Fonts link
+          const link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(
+            " ",
+            "+"
+          )}:wght@400;700&display=swap`;
+          document.head.appendChild(link);
+
+          // Apply the font and text color to the text
+          link.onload = function () {
+            const textElement = document.querySelector(".conference-text");
+            textElement.style.fontFamily = `'${randomFont}', Arial, sans-serif`;
+            textElement.style.color = randomColors.text;
+          };
         }
-
-        // Add click event listener to the text
-        document.addEventListener('DOMContentLoaded', function() {
-            // Update text if query parameter is present
-            updateTextFromQueryParam();
-            
-            const clickableElement = document.querySelector('body');
-            clickableElement.style.cursor = 'pointer'; // Add pointer cursor to indicate it's clickable
-            clickableElement.addEventListener('click', changeFontAndColor);
-            // Apply initial random font and color
-            changeFontAndColor();
-        });
+      });
     </script>
-</body>
-</html> 
+  </body>
+</html>
